@@ -14,6 +14,7 @@ The end user flow looks like this:
 
 ![](https://i.imgur.com/KML7odK.png)
 
+
 As should be evident in the screen shots above, one needs a Marketplace application and an approved product subscription in order to request access to a product's assets (resources).
 
 The API Builder project exposes one API:
