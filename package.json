@@ -2,7 +2,7 @@
 	"name": "apib_mas_approval_flow_hw",
 	"description": "An API Builder service",
 	"main": "app.js",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"license": "",
 	"keywords": [
 		"api-builder",
