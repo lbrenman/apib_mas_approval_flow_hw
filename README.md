@@ -1,8 +1,23 @@
-# Axway Marketplace Asset Request Auto Approver using API Builder
+# Axway Marketplace Asset Request and Product Subscription Auto Approver using API Builder
 
-This API Builder project implements an automatic approval flow for Axway Marketplace asset requests. A user requests access to a asset (resources) in order to retrieve credentials (e.g. API Key) to call the API. This project is intended to be an example of the two main steps required to implement an asset requests approval workflow, namely respond to webhooks and make API calls to the platform. However, it can be extended to notify the API provisioning team and/or log asset requests in an auditing system or CRM, for example.
+This API Builder project implements the steps described [**here**](https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/webhook/marketplace_subscription_webhook/index.html) to automatically approve Axway Marketplace Product subscription approval requests.
 
-The end user flow looks like this:
+This API Builder project also implements an automatic approval flow for Axway Marketplace asset requests. A user requests access to a asset (resources) in order to retrieve credentials (e.g. API Key) to call the API.
+
+It is intended to be an example of the two main steps required to implement a product subscription workflow, namely respond to webhooks and make API calls to the platform. However, it can be extended to notify the API provisioning team and/or log subscriptions in an auditing system or CRM, for example.
+
+The end user flow for Product Subscription Requests looks like this:
+
+![](https://i.imgur.com/RaRuLHh.png)
+
+![](https://i.imgur.com/gaM3jcN.png)
+
+![](https://i.imgur.com/zupyrCj.png)
+
+![](https://i.imgur.com/BTP6bZ5.png)
+
+
+The end user flow for Asset Requests is shown below:
 
 ![](https://i.imgur.com/ErQA2ud.png)
 
@@ -29,6 +44,8 @@ CLIENT_SECRET=<An Axway service account client Secret>
 API_KEY=<An API Key that you set>
 API_CENTRAL_URL=https://apicentral.axway.com
 ```
+
+
 
 I configured my asset request Webhook as follows:
 

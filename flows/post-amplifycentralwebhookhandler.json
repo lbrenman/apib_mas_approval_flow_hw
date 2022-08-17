@@ -162,7 +162,7 @@
 				{
 					"name": "code",
 					"type": "string",
-					"value": "\"let body = data.request.body;\\n  return (body.type === 'SubResourceUpdated') && (body.metadata.subresource === 'approval') && (body.payload.approval.state.name === 'pending');\"",
+					"value": "\"let body = data.request.body,\\n      isAssetRequest = (body.type === 'SubResourceUpdated') && (body.metadata.subresource === 'approval') && (body.payload.approval.state.name === 'pending') && (body.payload.kind === 'AssetRequest'),\\n      isSubsscriptionRequest = (body.type === 'SubResourceUpdated') && (body.metadata.subresource === 'approval') && (body.payload.approval.state === 'pending') && (body.payload.kind === 'Subscription');\\n  \\n  return isAssetRequest || isSubsscriptionRequest;\"",
 					"metaName": "Code",
 					"metaDescription": "A JavaScript function body. Supports `await` and returning promises. `data` is the value of the Data parameter. `logger` is the API Builder logger. See the docs for more info: https://docs.axway.com/bundle/api-builder/page/docs/developer_guide/flows/flow_nodes/javascript_flow_node/index.html"
 				}
@@ -238,9 +238,7 @@
 				{
 					"name": "code",
 					"type": "string",
-					"value": "\"let url = data.env.API_CENTRAL_URL+'/apis'+data.request.body.payload.metadata.selfLink+'/approval';\\n  let body = {\\n  \\\"approval\\\": {\\n    \\\"state\\\": {\\n      \\\"name\\\": \\\"approved\\\",\\n      \\\"reason\\\": \\\"Your asset requests was automatically approved in an Axway API Builder flow\\\"\\n    }\\n  \\t}\\n  };\\n  return {url,body};\"",
-					"metaName": "Code",
-					"metaDescription": "A JavaScript function body. Supports `await` and returning promises. `data` is the value of the Data parameter. `logger` is the API Builder logger. See the docs for more info: https://docs.axway.com/bundle/api-builder/page/docs/developer_guide/flows/flow_nodes/javascript_flow_node/index.html"
+					"value": "\"let url = data.env.API_CENTRAL_URL+'/apis'+data.request.body.payload.metadata.selfLink+'/approval',\\n      body = {};\\n  \\n  if(data.request.body.payload.kind === 'AssetRequest') {\\n    body = {\\n      \\\"approval\\\": {\\n        \\\"state\\\": {\\n          \\\"name\\\": \\\"approved\\\",\\n          \\\"reason\\\": \\\"Your asset request was automatically approved in an Axway API Builder flow\\\"\\n        }\\n      }\\n    };\\n  } else {\\n    body = {\\n    \\\"approval\\\": {\\n      \\\"state\\\": \\\"approved\\\",\\n        \\\"reason\\\": \\\"Your asset request was automatically approved in an Axway API Builder flow\\\"\\n      }\\n    };\\n  }\\n  \\n  return {url,body};\""
 				}
 			],
 			"outputs": {
